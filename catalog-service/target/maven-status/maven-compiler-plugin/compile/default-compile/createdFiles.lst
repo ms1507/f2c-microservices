@@ -1,0 +1,14 @@
+com\rural\marketplace\catalog\service\FileStorageService.class
+com\rural\marketplace\catalog\repository\ProductSpecifications.class
+com\rural\marketplace\catalog\entity\Product.class
+com\rural\marketplace\catalog\service\CategoryService.class
+com\rural\marketplace\catalog\repository\CategoryRepository.class
+com\rural\marketplace\catalog\controller\CategoryController.class
+com\rural\marketplace\catalog\dto\ProductDTO.class
+com\rural\marketplace\catalog\repository\ProductRepository.class
+com\rural\marketplace\catalog\CatalogServiceApplication.class
+com\rural\marketplace\catalog\entity\Category.class
+com\rural\marketplace\catalog\dto\CategoryDTO.class
+com\rural\marketplace\catalog\service\LocalFileStorageService.class
+com\rural\marketplace\catalog\service\ProductService.class
+com\rural\marketplace\catalog\controller\ProductController.class

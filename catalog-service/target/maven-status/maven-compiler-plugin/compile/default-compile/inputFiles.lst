@@ -1,0 +1,14 @@
+D:\Rural_marketplace_App\RuralMarketPlace-backend\catalog-service\src\main\java\com\rural\marketplace\catalog\repository\ProductRepository.java
+D:\Rural_marketplace_App\RuralMarketPlace-backend\catalog-service\src\main\java\com\rural\marketplace\catalog\controller\ProductController.java
+D:\Rural_marketplace_App\RuralMarketPlace-backend\catalog-service\src\main\java\com\rural\marketplace\catalog\CatalogServiceApplication.java
+D:\Rural_marketplace_App\RuralMarketPlace-backend\catalog-service\src\main\java\com\rural\marketplace\catalog\repository\CategoryRepository.java
+D:\Rural_marketplace_App\RuralMarketPlace-backend\catalog-service\src\main\java\com\rural\marketplace\catalog\service\CategoryService.java
+D:\Rural_marketplace_App\RuralMarketPlace-backend\catalog-service\src\main\java\com\rural\marketplace\catalog\controller\CategoryController.java
+D:\Rural_marketplace_App\RuralMarketPlace-backend\catalog-service\src\main\java\com\rural\marketplace\catalog\service\FileStorageService.java
+D:\Rural_marketplace_App\RuralMarketPlace-backend\catalog-service\src\main\java\com\rural\marketplace\catalog\service\LocalFileStorageService.java
+D:\Rural_marketplace_App\RuralMarketPlace-backend\catalog-service\src\main\java\com\rural\marketplace\catalog\dto\ProductDTO.java
+D:\Rural_marketplace_App\RuralMarketPlace-backend\catalog-service\src\main\java\com\rural\marketplace\catalog\entity\Category.java
+D:\Rural_marketplace_App\RuralMarketPlace-backend\catalog-service\src\main\java\com\rural\marketplace\catalog\service\ProductService.java
+D:\Rural_marketplace_App\RuralMarketPlace-backend\catalog-service\src\main\java\com\rural\marketplace\catalog\dto\CategoryDTO.java
+D:\Rural_marketplace_App\RuralMarketPlace-backend\catalog-service\src\main\java\com\rural\marketplace\catalog\repository\ProductSpecifications.java
+D:\Rural_marketplace_App\RuralMarketPlace-backend\catalog-service\src\main\java\com\rural\marketplace\catalog\entity\Product.java

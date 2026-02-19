@@ -1,0 +1,12 @@
+com\rural\marketplace\common\context\UserContextHolder.class
+com\rural\marketplace\common\exception\GlobalExceptionHandler.class
+com\rural\marketplace\common\event\OrderPlacedEvent$OrderPlacedEventBuilder.class
+com\rural\marketplace\common\dto\ErrorResponse$ErrorResponseBuilder.class
+com\rural\marketplace\common\event\OrderPlacedEvent.class
+com\rural\marketplace\common\exception\ResourceNotFoundException.class
+com\rural\marketplace\common\dto\ProductDTO$ProductDTOBuilder.class
+com\rural\marketplace\common\exception\ConflictException.class
+com\rural\marketplace\common\dto\ProductDTO.class
+com\rural\marketplace\common\security\JwtService.class
+com\rural\marketplace\common\exception\ServiceUnavailableException.class
+com\rural\marketplace\common\dto\ErrorResponse.class

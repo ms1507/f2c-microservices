@@ -1,0 +1,71 @@
+{
+    "info": {
+        "_postman_id": "8b5f6e1f-8c3b-4b2a-8c9d-123456789012",
+        "name": "RuralMarketplace_OrderService",
+        "description": "Collection for Order Service APIs",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Place Order",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer {{token}}",
+                        "type": "text"
+                    },
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n    \"shippingAddress\": \"123 Farm House, Village A, District B\",\r\n    \"items\": [\r\n        {\r\n            \"productId\": 1,\r\n            \"quantity\": 2\r\n        },\r\n        {\r\n            \"productId\": 2,\r\n            \"quantity\": 1\r\n        }\r\n    ]\r\n}"
+                },
+                "url": {
+                    "raw": "{{gateway_url}}/api/v1/orders",
+                    "host": [
+                        "{{gateway_url}}"
+                    ],
+                    "path": [
+                        "api",
+                        "v1",
+                        "orders"
+                    ]
+                }
+            },
+            "response": []
+        }
+    ],
+    "event": [
+        {
+            "listen": "prerequest",
+            "script": {
+                "type": "text/javascript",
+                "exec": [
+                    ""
+                ]
+            }
+        },
+        {
+            "listen": "test",
+            "script": {
+                "type": "text/javascript",
+                "exec": [
+                    ""
+                ]
+            }
+        }
+    ],
+    "variable": [
+        {
+            "key": "gateway_url",
+            "value": "http://localhost:8080",
+            "type": "string"
+        }
+    ]
+}

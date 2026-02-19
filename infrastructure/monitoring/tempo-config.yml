@@ -1,0 +1,19 @@
+# Tempo Configuration
+# For high-scale distributed tracing storage.
+
+server:
+  http_listen_port: 3200
+
+distributor:
+  receivers:
+    otlp:
+      # Tempo receives traces via OTLP protocol
+      protocols:
+        http:
+        grpc:
+
+storage:
+  trace:
+    backend: local # Storing traces in the local filesystem for dev
+    local:
+      path: /tmp/tempo/traces

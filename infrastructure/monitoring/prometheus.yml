@@ -1,0 +1,12 @@
+# Prometheus Configuration
+# This file defines the global scraping settings and the targets for metric collection.
+
+global:
+  scrape_interval: 15s # How often to scrape targets by default
+
+scrape_configs:
+  # Job to scrape metrics from the OpenTelemetry Collector
+  - job_name: 'otel-collector'
+    static_configs:
+      # OTel Collector exposes Prometheus-formatted metrics on port 8889
+      - targets: ['otel-collector:8889']

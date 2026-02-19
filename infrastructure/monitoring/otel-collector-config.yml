@@ -1,0 +1,59 @@
+# OpenTelemetry Collector Configuration
+# This file defines how telemetry data (metrics, logs, traces) is received, processed, and exported.
+
+receivers:
+  otlp:
+    protocols:
+      grpc:
+        endpoint: 0.0.0.0:4317
+      http:
+        endpoint: 0.0.0.0:4318
+
+processors:
+  # Batch data to improve throughput and reduction of network calls
+  batch:
+    timeout: 1s
+    send_batch_size: 1024
+
+exporters:
+  # Export to local console for debugging
+  debug:
+    verbosity: basic
+  
+  # Export metrics as Prometheus targets
+  prometheus:
+    endpoint: "0.0.0.0:8889"
+    send_timestamps: true
+    metric_expiration: 180s
+
+  # Export traces to Grafana Tempo via OTLP HTTP
+  otlphttp/tempo:
+    endpoint: "http://tempo:4318"
+    tls:
+      insecure: true
+
+  # Export logs to Grafana Loki via OTLP HTTP
+  otlphttp/loki:
+    endpoint: "http://loki:3100/otlp"
+    tls:
+      insecure: true
+
+service:
+  pipelines:
+    # Metrics pipeline: OTLP Receiver -> Batch Processor -> Prometheus Exporter
+    metrics:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [prometheus, debug]
+    
+    # Traces pipeline: OTLP Receiver -> Batch Processor -> Tempo Exporter
+    traces:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [otlphttp/tempo, debug]
+    
+    # Logs pipeline: OTLP Receiver -> Batch Processor -> Loki Exporter
+    logs:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [otlphttp/loki, debug]

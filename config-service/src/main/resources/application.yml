@@ -1,0 +1,26 @@
+server:
+  port: 8888
+
+# CONFIGURATION for local configuration files.
+spring:
+  application:
+    name: config-service
+  profiles:
+    active: native
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: classpath:/config-repo, file:./config-repo, file:../config-repo
+# CONFIGURATION FOR GIT location files.
+#  cloud:
+#    config:
+#      server:
+#        git:
+#          uri: https://github.com/your-org/config-repo.git
+#          default-label: main
+#          search-paths:
+#            - config
+#            - services
+#          clone-on-start: true
+#          timeout: 10

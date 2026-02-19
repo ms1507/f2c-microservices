@@ -1,0 +1,15 @@
+com\rural\marketplace\order\entity\Order$OrderBuilder.class
+com\rural\marketplace\order\config\ResilienceLoggingConfig.class
+com\rural\marketplace\order\OrderServiceApplication.class
+com\rural\marketplace\order\config\KafkaTopicConfig.class
+com\rural\marketplace\order\dto\OrderRequest.class
+com\rural\marketplace\order\entity\Order.class
+com\rural\marketplace\order\entity\OrderItem$OrderItemBuilder.class
+com\rural\marketplace\order\client\ProductClient.class
+com\rural\marketplace\order\entity\OrderItem.class
+com\rural\marketplace\order\dto\OrderItemRequest.class
+com\rural\marketplace\order\repository\OrderRepository.class
+com\rural\marketplace\order\dto\OrderItemRequest$OrderItemRequestBuilder.class
+com\rural\marketplace\order\service\OrderService.class
+com\rural\marketplace\order\dto\OrderRequest$OrderRequestBuilder.class
+com\rural\marketplace\order\controller\OrderController.class

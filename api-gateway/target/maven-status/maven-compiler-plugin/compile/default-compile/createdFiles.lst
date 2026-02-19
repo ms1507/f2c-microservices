@@ -1,0 +1,3 @@
+com\rural\marketplace\gateway\filter\AuthenticationFilterGatewayFilterFactory.class
+com\rural\marketplace\gateway\filter\AuthenticationFilterGatewayFilterFactory$Config.class
+com\rural\marketplace\gateway\ApiGatewayApplication.class

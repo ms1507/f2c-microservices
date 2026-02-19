@@ -1,0 +1,93 @@
+
+1) First we have created user-service - including CRUD for create Role, Permissions, Users etc.
+2) We have implemented Spring security for Authentication of requests using JWT, JWTAuthFilter. etc.
+3) We have to create infrastructure for configuration and discovery of services and interservices communication.
+next ->
+
+Phase 1.1 (Config Service) & 1.2 (Service Discovery) are Ready!
+I have:
+
+Centralized Configuration:> Moved user-service and catalog-service configs to the config-repo folder.
+Updated Services: Configured both services to fetch settings from the Config Server.
+Added Dependencies: Enabled config-client and eureka-client in both services.
+
+Action Required: Start Infrastructure
+    Please start the services in this exact order (in separate terminals):
+    1) Config Service (Port 8888)
+        cd config-service
+        mvn spring-boot:run
+    2) Discovery Service (Port 8761)
+        cd discovery-service
+        mvn spring-boot:run
+    3) User Service (Port 8081)
+        cd user-service
+        mvn spring-boot:run
+    (Check logs: It should say "Fetching config from server..." and "Registered with Eureka")
+    4) Catalog Service (Port 8082)
+        cd catalog-service
+        mvn spring-boot:run
+
+  ** Once all are running, check:
+
+   Eureka Dashboard: http://localhost:8761 (Should show USER-SERVICE and CATALOG-SERVICE)
+   Config Test: http://localhost:8888/user-service/default (Should show JSON config)
+
+===================================================================================
+**  Issues & Improvements (Important) in security **
+===================================================================================
+🔴 Issue 1: Mutated request is NOT applied
+
+This line:
+
+exchange.mutate().request(
+    exchange.getRequest().mutate()
+        .header("X-Logged-In-User", username)
+        .build())
+    .build();
+
+
+👉 You are mutating, but NOT using the mutated exchange.
+
+❌ The downstream service will NOT receive the header.
+
+🔴 Issue 2: Token validated but roles not propagated
+
+You validate the token but:
+
+You don’t pass role / authorities
+
+Downstream services can’t do authorization properly
+
+🟡 Issue 3: Gateway doing too much logging at INFO
+
+This line:
+
+log.info("ACCESS GRANTED: User [{}] authorized for request to [{}]", username, ...)
+
+
+In high-traffic systems:
+
+This should be DEBUG
+
+INFO logs are for business events, not every request
+
+🟡 Issue 4: Missing response body for 401
+
+Right now, clients get:
+
+HTTP 401
+
+No message
+
+Good APIs return structured errors.
+
+===========================================================
+
+FROM JWTService.java remove hardcoded secret key and use application.yml to configure it.
+
+=========================================================== 
+ProductController.java and ProductService.java
+
+Fornow we have removed the product image from input. In future we will requier this. 
+
+===========================================================

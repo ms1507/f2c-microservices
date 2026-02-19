@@ -1,0 +1,30 @@
+# Rural Marketplace Application - Development Tasks
+
+- [/] Requirements Gathering & Analysis
+    - [x] Create initial Business Requirement Document (BRD)
+    - [x] Refine BRD based on user feedback
+- [/] System Architecture & Design
+    - [ ] High-Level Architecture Diagram (Microservices)
+    - [ ] Database Schema Design (PostgreSQL)
+    - [ ] Event-Driven Strategy (Kafka/RabbitMQ)
+- [/] Implementation Planning
+    - [x] Define MVP Scope
+    - [x] Select specific tools and libraries
+- [/] Service Development
+    - [/] User Service (Standalone Mode)
+        - [x] Entities & Repository
+        - [x] Basic CRUD APIs
+        - [x] JWT Implementation
+    - [ ] Catalog Service
+    - [ ] Order Service
+- [/] Infrastructure Setup
+    - [/] Project Initialization
+    - [/] Config Service
+        - [ ] Create config-repo configurations
+        - [ ] Update services to use Config Server
+    - [ ] Discovery Service
+        - [ ] Start Discovery Server
+        - [ ] Register User & Catalog Services
+    - [ ] API Gateway
+    - [ ] Catalog Service
+    - [ ] Order Service

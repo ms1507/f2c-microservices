@@ -1,0 +1,59 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: api-gateway
+  config:
+    import: "optional:configserver:http://localhost:8888"
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+        - id: user-service-auth
+          uri: lb://user-service
+          predicates:
+            - Path=/api/v1/auth/**
+          # No Authentication Filter for Auth endpoints (Public)
+
+        - id: user-service
+          uri: lb://user-service
+          predicates:
+            - Path=/api/v1/users/**
+          filters:
+            - AuthenticationFilter # Applies our custom filter
+            
+        - id: catalog-service
+          uri: lb://catalog-service
+          predicates:
+            - Path=/api/v1/products/**, /api/v1/categories/**
+          filters:
+            - AuthenticationFilter
+           # - AuthenticationFilter # Optional: Enable if we want to secure catalog. For now, let's keep it open for read? 
+           # Ideally: GET is public, POST/PUT/DELETE is secured. 
+           # This requires more complex predicates or split routes. For now, let's secure everything to prove it works, or leave open.
+           # Plan says: "Optional: Auth for Writes, Public for Reads" -> Let's keep it simple first and Open.
+#            - name: AuthenticationFilter # Let's uncomment this if we want to test security.
+#              args: {}
+
+        - id: order-service
+          uri: lb://order-service
+          predicates:
+            - Path=/api/v1/orders/**
+          filters:
+            - AuthenticationFilter
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+  instance:
+    prefer-ip-address: true
+
+
+
+
