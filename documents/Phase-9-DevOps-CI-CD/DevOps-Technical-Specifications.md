@@ -138,3 +138,16 @@ git push origin f2c-dev
 
 ### 🐳 Step 4: Final Docker Hub Verification
 Log into [Docker Hub](https://hub.docker.com/). You should see 7 repositories (e.g., `rural-catalog-service`) updated with the `:latest` tag.
+
+---
+
+## ❓ Frequently Asked Questions
+
+### Q: What will happen next if the Pull Request is merged successfully to the `dev` branch?
+
+Once the pull request is merged successfully into the **`dev`** branch, the following automated sequence occurs:
+
+1.  **Second CI/CD Execution (The "Push" Trigger)**: Even though the build ran when you opened the PR, it will run again immediately upon merging. This ensures that the final merged state of the code is the one that gets built and pushed to Docker Hub.
+2.  **Docker Hub Update**: The GitHub Action will perform a final Maven build, re-build the Docker images for all 7 services, and overwrite the previous images on your Docker Hub with the new `:latest` versions.
+3.  **Readiness for Local Deployment**: The moment the GitHub Action turns green (✅) after the merge, you can pull those fresh images to your local machine by running `docker-compose pull` followed by `docker-compose up -d`.
+4.  **Transition to Phase 10**: With the CI/CD pipeline successfully verified with a real merge, we are officially ready to move to **Phase 10: Cloud Deployment & Kubernetes**.
