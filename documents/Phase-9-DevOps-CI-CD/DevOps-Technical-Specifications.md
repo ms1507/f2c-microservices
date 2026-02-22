@@ -65,7 +65,7 @@ To ensure system stability, services use the `service_healthy` condition:
 
 ### Automated CI/CD Workflow
 - **File**: `.github/workflows/ci-cd.yml`
-- **Trigger**: `push` or `pull_request` to the `main` branch.
+- **Trigger**: `push` or `pull_request` to the `dev` branch.
 - **Steps**:
     1. Checkout code and setup JDK 17.
     2. Build all modules via Maven.
@@ -109,9 +109,9 @@ Images are pushed to Docker Hub using the pattern:
 
 ## 🚀 5. Verification & Activation (Pull Request Workflow)
 
-To safely verify the CI/CD pipeline, use the Pull Request (PR) workflow. This allows you to validate the build before merging into `main`.
+To safely verify the CI/CD pipeline, use the Pull Request (PR) workflow. This allows you to validate the build before merging into `dev`.
 
-### 📥 Step 1: Push to Development Branch
+### 📥 Step 1: Push to Feature Branch
 Run these commands in your terminal at the project root to upload your changes:
 
 ```bash
@@ -121,14 +121,14 @@ git add .
 # Commit the changes
 git commit -m "feat: complete phase 9 devops implementation"
 
-# Push to your development branch
+# Push to your current feature/dev branch
 git push origin f2c-dev
 ```
 
 ### 🔀 Step 2: Raise a Pull Request (GitHub Website)
 1.  Open your repository on **GitHub** in your browser.
 2.  Click the **"Pull requests"** tab -> **"New pull request"**. 
-3.  Select `main` as the **base** branch and `f2c-dev` as the **compare** branch.
+3.  Select `dev` as the **base** branch and `f2c-dev` as the **compare** branch.
 4.  Click **"Create pull request"**.
 
 ### 📺 Step 3: Monitor & Verify

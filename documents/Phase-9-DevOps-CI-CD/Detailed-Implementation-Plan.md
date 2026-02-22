@@ -73,11 +73,11 @@ This document provides an exhaustive, step-by-step guide for implementing Phase 
 ---
 
 ### 🤖 Step 6: Automated CI/CD (GitHub Actions) [COMPLETED]
-- **Objective**: Automate the Build -> Image -> Push cycle on every commit to `main` (via Pull Request).
+- **Objective**: Automate the Build -> Image -> Push cycle on every commit to `dev` (via Pull Request).
 - **File**: `.github/workflows/ci-cd.yml`.
 - **Professional Verification Activity (PR Workflow)**:
-    1. **Push to Dev Branch**: `git push origin f2c-dev`
-    2. **Raise a PR**: Open GitHub and create a Pull Request from `f2c-dev` into `main`.
+    1. **Push to Feature Branch**: `git push origin your-feature-branch`
+    2. **Raise a PR**: Open GitHub and create a Pull Request from your feature branch into `dev`.
     3. **Monitor**: The "Rural Marketplace CI/CD" workflow will trigger automatically on the PR. 
     4. **Merge**: Once the build is green (✅), merge the PR to update images on Docker Hub.
     - *Full details in [DevOps Technical Specifications](file:///d:/Rural_marketplace_App/RuralMarketPlace-backend/documents/Phase-9-DevOps-CI-CD/DevOps-Technical-Specifications.md#🚀-5-verification--activation-pull-request-workflow).*
