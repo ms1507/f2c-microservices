@@ -107,28 +107,34 @@ Images are pushed to Docker Hub using the pattern:
 
 ---
 
-## 🚀 5. Verification & Activation
+## 🚀 5. Verification & Activation (Pull Request Workflow)
 
-Follow these steps to trigger your first build and verify the CI/CD pipeline.
+To safely verify the CI/CD pipeline, use the Pull Request (PR) workflow. This allows you to validate the build before merging into `main`.
 
-### 📥 1. Commit and Push
-Run these commands in your terminal (at the project root) to upload all the Docker and CI/CD changes:
+### 📥 Step 1: Push to Development Branch
+Run these commands in your terminal at the project root to upload your changes:
 
 ```bash
+# Add all new Docker and Workflow files
 git add .
-git commit -m "feat: implement phase 9 containerization and ci/cd"
-git push origin main
+
+# Commit the changes
+git commit -m "feat: complete phase 9 devops implementation"
+
+# Push to your development branch
+git push origin f2c-dev
 ```
 
-### 📺 2. Monitor the Result
-1.  Go to your repository on GitHub.
-2.  Click the **Actions** tab at the top.
-3.  You will see a live workflow named **"Rural Marketplace CI/CD"**.
-4.  Click on it to watch GitHub:
-    - Build your Java code.
-    - Create the Docker images.
-    - Log into Docker Hub using your secrets.
-    - Push the finished images to your registry.
+### 🔀 Step 2: Raise a Pull Request (GitHub Website)
+1.  Open your repository on **GitHub** in your browser.
+2.  Click the **"Pull requests"** tab -> **"New pull request"**. 
+3.  Select `main` as the **base** branch and `f2c-dev` as the **compare** branch.
+4.  Click **"Create pull request"**.
 
-### 🐳 3. Verify on Docker Hub
-Once the GitHub Action finishes (turns green), log into **Docker Hub**. You should see 7 new repositories (e.g., `rural-catalog-service`, `rural-order-service`, etc.) populated with your images!
+### 📺 Step 3: Monitor & Verify
+1.  **Check the PR**: Go to the bottom of your new Pull Request page to find the checks section.
+2.  **Watch the Build**: You will see **"Rural Marketplace CI/CD / build-and-push"** in progress. Click **"Details"** to watch the real-time build and push logs.
+3.  **Merge**: Once the build turns **Green (✅)**, click **"Merge pull request"**. This officially updates your images on **Docker Hub**.
+
+### 🐳 Step 4: Final Docker Hub Verification
+Log into [Docker Hub](https://hub.docker.com/). You should see 7 repositories (e.g., `rural-catalog-service`) updated with the `:latest` tag.
