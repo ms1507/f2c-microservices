@@ -80,7 +80,9 @@ The following secrets must be configured in your GitHub Repository settings (**S
 **Stage 1: Generate a Docker Hub Token** (Better than using your password):
 1.  Login to [Docker Hub](https://hub.docker.com/).
 2.  Go to **Account Settings** -> **Security** -> **Personal Access Tokens**.
-3.  Click **Generate New Token**, name it "GitHub-Actions", and **copy it**.
+3. Click **Generate New Token**, name it "GitHub-Actions".
+4. **IMPORTANT**: In the **Access Permissions** dropdown, select **"Read, Write, Manage"** (or at least **"Read & Write"**). If set to "Public Read-only", the push will fail.
+5. Click Generate and **copy it**.
 
 **Stage 2: Add to GitHub**:
 1.  Open your repository on GitHub in your browser.
@@ -151,3 +153,16 @@ Once the pull request is merged successfully into the **`dev`** branch, the foll
 2.  **Docker Hub Update**: The GitHub Action will perform a final Maven build, re-build the Docker images for all 7 services, and overwrite the previous images on your Docker Hub with the new `:latest` versions.
 3.  **Readiness for Local Deployment**: The moment the GitHub Action turns green (✅) after the merge, you can pull those fresh images to your local machine by running `docker-compose pull` followed by `docker-compose up -d`.
 4.  **Transition to Phase 10**: With the CI/CD pipeline successfully verified with a real merge, we are officially ready to move to **Phase 10: Cloud Deployment & Kubernetes**.
+
+---
+
+## 🛠️ Local Verification & Development
+
+To test the containerized environment on your own machine:
+
+1.  **Build Code**: `mvn clean install -DskipTests`
+2.  **Start Containers**: `docker-compose up -d --build`
+3.  **Logs**: `docker-compose logs -f <service-name>` (e.g., `api-gateway`)
+
+For a comprehensive narrative of the implementation and visual success confirmation, see the:
+👉 **[Phase Completion Walkthrough](file:///d:/Rural_marketplace_App/RuralMarketPlace-backend/documents/Phase-9-DevOps-CI-CD/Phase-Completion-Walkthrough.md)**
