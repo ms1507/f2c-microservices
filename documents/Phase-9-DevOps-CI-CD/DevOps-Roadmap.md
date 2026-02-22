@@ -14,7 +14,7 @@ This phase focuses on standardizing the deployment lifecycle, automating testing
 ### External Tools & Accounts
 - **GitHub Account**: To host the repository and run GitHub Actions.
 - **Docker Hub Account**: A registry to store and version your container images.
-- **GitHub Secrets**: For securely storing `DOCKER_USERNAME` and `DOCKER_PASSWORD` in your repository settings.
+- **GitHub Secrets**: For securely storing `DOCKERHUB_USERNAME` and `DOCKERHUB_TOKEN` in your repository settings.
 
 ---
 
@@ -80,7 +80,7 @@ services:
 ---
 
 ### Step 3: CI/CD Pipeline with GitHub Actions
-**Objective:** Automate the "Build -> Test -> Push" flow whenever code is pushed to GitHub.
+**Objective:** Automate the "Build -> Test -> Push" flow whenever code is pushed to the `dev` branch on GitHub.
 
 **Workflow Location:** `.github/workflows/ci-cd.yml`
 
@@ -89,7 +89,7 @@ services:
 2. **Setup Java**: Configure the build environment.
 3. **Maven Build**: Run `mvn clean install` to verify all modules and run unit tests.
 4. **Docker login**: Authenticate with Docker Hub using Secrets.
-5. **Build & Push**: Build the image and push it with a tag (e.g., `latest` or `v1.0.0`).
+5. **Build & Push**: Build the image and push it with a tag (e.g., `latest`).
 
 ---
 
@@ -103,10 +103,16 @@ services:
 ## 🧪 Verification Plan
 
 ### 1. Manual Docker Build
-Run `docker build -t rural-catalog:v1 -f catalog-service/Dockerfile .` and verify the image is created.
+Run `docker build -t rural-catalog:latest -f catalog-service/Dockerfile .` and verify the image is created.
 
 ### 2. Full Stack Test
 Run `docker-compose up -d` and check Eureka (`localhost:8761`) to see if all services registered via their container names.
 
 ### 3. CI Simulation
-Push a change to a feature branch and observe the "Actions" tab in GitHub to ensure the build finishes successfully.
+Push a change to your feature branch (`f2c-dev`) and raise a Pull Request to **`dev`**. Observe the "Actions" tab in GitHub to ensure the build finishes successfully.
+
+---
+
+## 🧪 Detailed Technical Reference
+For the full Service Matrix, detailed Dockerfile logic, and Manual Secret setup guide, please refer to:
+👉 **[DevOps Technical Specifications](file:///d:/Rural_marketplace_App/RuralMarketPlace-backend/documents/Phase-9-DevOps-CI-CD/DevOps-Technical-Specifications.md)**
